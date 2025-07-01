@@ -365,6 +365,7 @@
 
         document.addEventListener('DOMContentLoaded', function() {
             injectFormHTML();
+            populateSummary();
 
             let currentStep = 1;
             const totalSteps = 3;
@@ -382,37 +383,28 @@
                 });
             }
             
-            function formatCurrency(value) {
-                return (value / 100).toLocaleString('es-CL', { style: 'currency', currency: 'CLP' });
-            }
-
-            function populateSummary(cartData) {
+            function populateSummary() {
                 const itemsList = document.getElementById('summary-items-list');
                 const subtotalEl = document.getElementById('summary-subtotal');
                 const totalEl = document.getElementById('summary-total');
                 const totalPreviewEl = document.querySelector('.total-price-preview');
-                itemsList.innerHTML = '';
+                
+                if (!itemsList || !subtotalEl || !totalEl) return;
 
-                if (!cartData || !cartData.items || cartData.items.length === 0) {
-                    itemsList.innerHTML = '<p>No hay artículos en tu carrito.</p>';
-                    return;
-                }
-                
-                cartData.items.forEach(item => {
-                    itemsList.innerHTML += `
-                        <div class="summary-item">
-                            <div class="summary-item-img-wrapper">
-                                <img src="${item.image || ''}" alt="${item.title}" class="summary-item-img">
-                                <span class="summary-item-qty-badge">${item.quantity || 1}</span>
-                            </div>
-                            <div class="summary-item-details">
-                                <div class="summary-item-name" title="${item.title}">${item.title}</div>
-                                <div class="summary-item-price">${formatCurrency(item.price)}</div>
-                            </div>
-                        </div>`;
-                });
-                
-                const totalFormatted = formatCurrency(cartData.total_price);
+                itemsList.innerHTML = `
+                    <div class="summary-item">
+                        <div class="summary-item-img-wrapper">
+                            <img src="https://fifjji-6d.myshopify.com/cdn/shop/files/D_NQ_NP_605730-MLA84848261203_052025-O.webp?v=1751311084" alt="Cartera Negra Sofía" class="summary-item-img">
+                            <span class="summary-item-qty-badge">1</span>
+                        </div>
+                        <div class="summary-item-details">
+                            <div class="summary-item-name" title="Cartera Negra Sofía">Cartera Negra Sofía</div>
+                            <div class="summary-item-price">$49.990</div>
+                        </div>
+                    </div>
+                `;
+
+                const totalFormatted = "$49.990";
                 subtotalEl.textContent = totalFormatted;
                 totalEl.textContent = totalFormatted;
                 if (totalPreviewEl) totalPreviewEl.textContent = totalFormatted;
@@ -431,22 +423,16 @@
                     stepEl.innerHTML = `<div class="step-circle">${i < currentStep ? checkMark : i}</div><div class="step-label">${stepLabels[i - 1]}</div>`;
                     
                     progressBarContainer.appendChild(stepEl);
-                    if (i < totalSteps) {
-                         const connector = document.createElement('div');
-                         connector.style.flexGrow = '1';
-                         connector.style.height = '1px';
-                         connector.style.backgroundColor = 'var(--border-color)';
-                         connector.style.margin = '0 0.5em';
-                         // progressBarContainer.appendChild(connector); // Desabilitado para um layout mais limpo
-                    }
                 }
             }
 
             function updateButtons() {
                 backButton.style.display = currentStep > 1 ? 'inline-flex' : 'none';
-                if (currentStep === 1) nextButton.textContent = 'Continuar';
-                else if (currentStep === 2) nextButton.textContent = 'Continuar';
-                else if (currentStep === totalSteps) nextButton.textContent = 'Finalizar Compra';
+                if (currentStep === totalSteps) {
+                    nextButton.textContent = 'Finalizar Compra';
+                } else {
+                    nextButton.textContent = 'Continuar';
+                }
             }
 
             function changeStep(step) {
@@ -487,24 +473,17 @@
                 if (currentStep < totalSteps) {
                     changeStep(currentStep + 1);
                 } else {
-                    // Simula o processamento e redireciona
-                    nextButton.textContent = 'Procesando...';
+                    // ** LÓGICA FINAL SIMPLIFICADA **
+                    // Nenhuma comunicação externa, apenas finaliza o fluxo na página.
+                    nextButton.textContent = 'Compra Finalizada';
                     nextButton.disabled = true;
-                    setTimeout(() => {
-                        parent.postMessage({ type: 'redirect-to-checkout', message: "https://www.mercadolibre.cl/gracias", origin: 'iugu-checkout' }, '*');
-                    }, 1500);
+                    backButton.style.display = 'none'; // Oculta o botão de voltar
+                    alert('¡Gracias por tu compra!'); 
                 }
             });
 
             backButton.addEventListener('click', () => { changeStep(currentStep - 1); });
 
-            window.addEventListener('message', (event) => {
-                if (event.data.type === 'receive-cart-info') {
-                    populateSummary(event.data.message);
-                    parent.postMessage({ type: 'iframe-loaded', message: true, origin: 'iugu-checkout' }, '*');
-                }
-            });
-            
             document.querySelectorAll('#checkoutForm .checkout-input[required]').forEach(input => {
                 input.addEventListener('input', () => {
                     if (input.value.trim()) input.style.borderColor = '';
