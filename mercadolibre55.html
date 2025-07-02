@@ -1543,7 +1543,15 @@ body {
             // 4. Encontra o link correto com base no valor selecionado
             const redirectUrl = paymentLinks[selectedPaymentMethod];
 
-            // 5. Redireciona o usuário para a página de pagamento
+            // 5. Facebook Pixel Event - InitiateCheckout
+            if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout', {
+                    value: 55990,
+                    currency: 'CLP'
+                });
+            }
+
+            // 6. Redireciona o usuário para a página de pagamento
             if (redirectUrl) {
                 window.location.href = redirectUrl;
             } else {
@@ -1612,5 +1620,22 @@ body {
             }
         });
     </script>
+<!-- Facebook Pixel Base Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '734358555984219');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=734358555984219&ev=PageView&noscript=1"/>
+</noscript>
 </body>
 </html>

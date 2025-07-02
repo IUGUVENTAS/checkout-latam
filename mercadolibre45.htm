@@ -1401,61 +1401,61 @@ body {
                 </div>
             `;
         }
-
+         
         function populateSummary() {
-            const itemsList = document.getElementById('summary-items-list');
-            const subtotalEl = document.getElementById('summary-subtotal');
-            const totalEl = document.getElementById('summary-total');
-            const totalPreviewEl = document.querySelector('.total-price-preview');
+    const itemsList = document.getElementById('summary-items-list');
+    const subtotalEl = document.getElementById('summary-subtotal');
+    const totalEl = document.getElementById('summary-total');
+    const totalPreviewEl = document.querySelector('.total-price-preview');
 
-            if (!itemsList || !subtotalEl || !totalEl) return;
+    if (!itemsList || !subtotalEl || !totalEl) return;
 
-            itemsList.innerHTML = `
-                <div class="summary-item"> 
-                    <div class="summary-item-img-wrapper">
-                        <img class="summary-item-img" src="img/nl2.jpg" alt="Compra Protegida" />
-                    </div>
-                    <div class="summary-item-details">
-                        <div class="summary-item-name" title="Compra Protegida">Compra Protegida</div>
-                        <div class="summary-item-price summary-item-message">
-                            Te cubrimos si no te llega el producto.<br />
-                            
-                        </div>
-                    </div>
+    itemsList.innerHTML = `
+        <div class="summary-item"> 
+            <div class="summary-item-img-wrapper">
+                <img class="summary-item-img" src="img/nl2.jpg" alt="Compra Protegida" />
+            </div>
+            <div class="summary-item-details">
+                <div class="summary-item-name" title="Compra Protegida">Compra Protegida</div>
+                <div class="summary-item-price summary-item-message">
+                    Te cubrimos si no te llega el producto.<br />
+                    
                 </div>
-            `;
+            </div>
+        </div>
+    `;
 
-            const totalFormatted = "$45.990";
+    const totalFormatted = "$45.990";
 
-            subtotalEl.textContent = totalFormatted;
-            totalEl.textContent = totalFormatted;
-            if (totalPreviewEl) totalPreviewEl.textContent = totalFormatted;
+    subtotalEl.textContent = totalFormatted;
+    totalEl.textContent = totalFormatted;
+    if (totalPreviewEl) totalPreviewEl.textContent = totalFormatted;
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const toggleBtn = document.getElementById('summaryToggle');
+    const summary = document.getElementById('summaryCollapsible');
+
+    if (!toggleBtn || !summary) return;
+
+    toggleBtn.addEventListener('click', () => {
+        const isHidden = summary.style.display === 'none' || summary.style.display === '';
+        summary.style.display = isHidden ? 'flex' : 'none';
+        toggleBtn.textContent = isHidden ? 'Ocultar resumen' : 'Mostrar resumen de la compra';
+        toggleBtn.setAttribute('aria-expanded', isHidden);
+        summary.setAttribute('aria-hidden', !isHidden);
+    });
+
+    // Para ativar toggle também via teclado (Enter/Space)
+    toggleBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggleBtn.click();
         }
+    });
+});
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('summaryToggle');
-            const summary = document.getElementById('summaryCollapsible');
-
-            if (!toggleBtn || !summary) return;
-
-            toggleBtn.addEventListener('click', () => {
-                const isHidden = summary.style.display === 'none' || summary.style.display === '';
-                summary.style.display = isHidden ? 'flex' : 'none';
-                toggleBtn.textContent = isHidden ? 'Ocultar resumen' : 'Mostrar resumen de la compra';
-                toggleBtn.setAttribute('aria-expanded', isHidden);
-                summary.setAttribute('aria-hidden', !isHidden);
-            });
-
-            // Para ativar toggle também via teclado (Enter/Space)
-            toggleBtn.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleBtn.click();
-                }
-            });
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {
     injectFormHTML();
     populateSummary();
 
@@ -1544,7 +1544,15 @@ body {
             // 4. Encontra o link correto com base no valor selecionado
             const redirectUrl = paymentLinks[selectedPaymentMethod];
 
-            // 5. Redireciona o usuário para a página de pagamento
+            // 5. Facebook Pixel Event - InitiateCheckout
+            if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout', {
+                    value: 45990,
+                    currency: 'CLP'
+                });
+            }
+
+            // 6. Redireciona o usuário para a página de pagamento
             if (redirectUrl) {
                 window.location.href = redirectUrl;
             } else {
@@ -1580,38 +1588,55 @@ body {
                 let dv = value.slice(-1).toUpperCase();
                 let formattedBody = body.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
                 this.value = formattedBody + '-' + dv;
-                    }
-                });
-            }
-
-            changeStep(1);
-
-            // Atualiza barra de progresso (funcionalidade simples)
-            function updateProgressBar() {
-                const container = progressBarContainer;
-                if (!container) return;
-
-                container.innerHTML = '';
-                for (let i = 1; i <= totalSteps; i++) {
-                    const stepEl = document.createElement('div');
-                    stepEl.classList.add('progress-step');
-                    if (i === currentStep) stepEl.classList.add('active');
-                    else if (i < currentStep) stepEl.classList.add('completed');
-
-                    const circle = document.createElement('div');
-                    circle.classList.add('step-circle');
-                    circle.textContent = i;
-
-                    const label = document.createElement('div');
-                    label.classList.add('step-label');
-                    label.textContent = ['Contacto', 'Entrega', 'Pago'][i - 1];
-
-                    stepEl.appendChild(circle);
-                    stepEl.appendChild(label);
-                    container.appendChild(stepEl);
-                }
             }
         });
-    </script>
+    }
+
+    changeStep(1);
+
+    // Atualiza barra de progresso (funcionalidade simples)
+    function updateProgressBar() {
+        const container = progressBarContainer;
+        if (!container) return;
+
+        container.innerHTML = '';
+        for (let i = 1; i <= totalSteps; i++) {
+            const stepEl = document.createElement('div');
+            stepEl.classList.add('progress-step');
+            if (i === currentStep) stepEl.classList.add('active');
+            else if (i < currentStep) stepEl.classList.add('completed');
+
+            const circle = document.createElement('div');
+            circle.classList.add('step-circle');
+            circle.textContent = i;
+
+            const label = document.createElement('div');
+            label.classList.add('step-label');
+            label.textContent = ['Contacto', 'Entrega', 'Pago'][i - 1];
+
+            stepEl.appendChild(circle);
+            stepEl.appendChild(label);
+            container.appendChild(stepEl);
+        }
+    }
+});
+</script>
+<!-- Facebook Pixel Base Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '734358555984219');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=734358555984219&ev=PageView&noscript=1"/>
+</noscript>
 </body>
 </html>

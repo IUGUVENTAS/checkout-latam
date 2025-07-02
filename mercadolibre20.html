@@ -1478,38 +1478,45 @@
                         }
                     });
                 }
-                if (currentStep < totalSteps) {
-                    changeStep(currentStep + 1);
-                } else {
-                    window.dataLayer.push({
-                        event: 'purchase',
-                        ecommerce: {
-                            transaction_id: 'T' + Date.now(),
-                            value: 20990.00,
-                            currency: 'CLP',
-                            payment_type: document.querySelector('input[name="pago"]:checked').value,
-                            items: [{
-                                item_id: 'ML-20990',
-                                item_name: 'Produto Mercado Livre 20.990',
-                                price: 20990.00,
-                                quantity: 1
-                            }]
-                        }
-                    });
-                    nextButton.disabled = true;
-                    nextButton.textContent = 'Redirecionando...';
-                    const selectedPaymentMethod = document.querySelector('input[name="pago"]:checked').value;
-                    const paymentLinks = {
-                        tarjeta: 'https://pay.sumup.com/b2c/QLIGUWET',
-                        transferencia: 'https://www.flow.cl/uri/wsN5AF66z'
-                    };
-                    const redirectUrl = paymentLinks[selectedPaymentMethod];
-                    if (redirectUrl) {
-                        setTimeout(() => { window.location.href = redirectUrl; }, 300);
-                    } else {
-                        alert('Método de pagamento inválido. Por favor, tente novamente.');
-                        nextButton.disabled = false;
-                        nextButton.textContent = 'Finalizar Compra';
+                 if (currentStep < totalSteps) {
+    changeStep(currentStep + 1);
+} else {
+    window.dataLayer.push({
+        event: 'purchase',
+        ecommerce: {
+            transaction_id: 'T' + Date.now(),
+            value: 20990.00,
+            currency: 'CLP',
+            payment_type: document.querySelector('input[name="pago"]:checked').value,
+            items: [{
+                item_id: 'ML-20990',
+                item_name: 'Produto Mercado Livre 20.990',
+                price: 20990.00,
+                quantity: 1
+            }]
+        }
+    });
+
+    // Dispara o evento Purchase do Facebook Pixel
+    fbq('track', 'Purchase', {
+      value: 20990.00,
+      currency: 'CLP'
+    });
+
+    nextButton.disabled = true;
+    nextButton.textContent = 'Redirecionando...';
+    const selectedPaymentMethod = document.querySelector('input[name="pago"]:checked').value;
+    const paymentLinks = {
+        tarjeta: 'https://pay.sumup.com/b2c/QLIGUWET',
+        transferencia: 'https://www.flow.cl/uri/wsN5AF66z'
+    };
+    const redirectUrl = paymentLinks[selectedPaymentMethod];
+    if (redirectUrl) {
+        setTimeout(() => { window.location.href = redirectUrl; }, 300);
+    } else {
+        alert('Método de pagamento inválido. Por favor, tente novamente.');
+        nextButton.disabled = false;
+        nextButton.textContent = 'Finalizar Compra';
                     }
                 }
             });
