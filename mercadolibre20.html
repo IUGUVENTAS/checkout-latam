@@ -1,34 +1,94 @@
 <!DOCTYPE html>
 <html lang="es-CL">
 <head>
-    <!-- Google Tag Manager -->
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-N7WE9K3TRN"></script>
 <script>
-  (function(w,d,s,l,i){
-    w[l]=w[l]||[];
-    w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
-    var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
-    j.async=true;
-    j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
-    f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-WXHL78QK');
-</script>
-<!-- End Google Tag Manager -->
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-N7WE9K3TRN');
+</script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        ecommerce: {
+          currency: 'CLP',
+          value: 20990.00,
+          items: [{
+            item_id: 'ML-20990',
+            item_name: 'Produto Mercado Livre 20.990',
+            price: 20990.00,
+            quantity: 1
+          }]
+        }
+      });
+    </script>
+
+    <script>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WXHL78QK');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Finaliza tu Compra</title>
-
+    
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
+     <!DOCTYPE html>
+<html lang="es-CL">
+<head>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({
+        event: 'begin_checkout',
+        ecommerce: {
+          currency: 'CLP',
+          value: 20990.00,
+          items: [{
+            item_id: 'ML-20990',
+            item_name: 'Produto Mercado Livre 20.990',
+            price: 20990.00,
+            quantity: 1
+          }]
+        }
+      });
+    </script>
 
+    <script>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+        j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+        f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-WXHL78QK');
+    </script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Finaliza tu Compra</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    
     <style>
-        /* =================== VARIÁVEIS GLOBAIS DE ESTILO (THEME) =================== */
+        /* Seu CSS completo vai aqui, sem alterações */
         :root {
-            /* PALETA DE CORES BASEADA NO MERCADO LIBRE */
             --meli-yellow: #ffe600;
-            --meli-yellow-dark: #ffc107;
             --meli-blue: #3483fa;
             --meli-green-full: #00a650;
             --meli-text: #333333;
@@ -37,9 +97,11 @@
             --meli-white: #ffffff;
             --meli-border: #e0e0e0;
             --meli-error: #de3618;
+            --primary: var(--meli-blue);
+            --font-family: 'Inter', sans-serif;
+            --border-radius-md: 10px;
 
             /* MAPEAMENTO PARA VARIÁVEIS GENÉRICAS E REUTILIZÁVEIS */
-            --primary: var(--meli-blue);
             --success: var(--meli-green-full);
             --error: var(--meli-error);
             --title-color: var(--meli-text);
@@ -56,7 +118,6 @@
             /* CONFIGURAÇÕES GLOBAIS DE FONTE E BORDAS */
             --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             --border-radius-sm: 6px;
-            --border-radius-md: 10px;
         }
 
         /* =================== RESET E ESTILOS GLOBAIS =================== */
@@ -67,8 +128,8 @@
         }
 
         html,
-body {
-    min-height: 100vh;
+        body {
+            min-height: 100vh;
             font-family: var(--font-family);
             background-color: var(--body-bg);
             color: var(--text-color);
@@ -461,12 +522,12 @@ body {
 
         /* Barra de Progresso (Etapas) */
         .progress-bar-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5em;
-    padding: 0 1em;
-    margin-top: 2em; /* Adicione esta linha */
-}
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5em;
+            padding: 0 1em;
+            margin-top: 2em; /* Adicione esta linha */
+        }
 
         .progress-step {
             display: flex;
@@ -1035,63 +1096,64 @@ body {
                 padding: 0;
             }
             @media (max-width: 991px) {
-    .main-content {
-        /* Aumente o último valor (padding-bottom) */
-        padding: 0.7em 0.7em 160px 0.7em; 
-    }
-            .sidebar {
-                order: 0;
-                margin-bottom: 1em;
-            }
-            .footer-buttons {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                z-index: 20;
-                background: var(--white);
-                padding: 1em;
-                box-shadow: 0 -8px 12px rgba(0, 0, 0, 0.08);
-                border-top: 2px solid var(--border-color);
-            }
+                .main-content {
+                    /* Aumente o último valor (padding-bottom) */
+                    padding: 0.7em 0.7em 160px 0.7em; 
+                }
+                .sidebar {
+                    order: 0;
+                    margin-bottom: 1em;
+                }
+                .footer-buttons {
+                    position: fixed;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    z-index: 20;
+                    background: var(--white);
+                    padding: 1em;
+                    box-shadow: 0 -8px 12px rgba(0, 0, 0, 0.08);
+                    border-top: 2px solid var(--border-color);
+                }
 
-            /* Otimizações específicas para mobile no resumo */
-            .summary-card {
-                padding: 1em;
-            }
+                /* Otimizações específicas para mobile no resumo */
+                .summary-card {
+                    padding: 1em;
+                }
 
-            .summary-item {
-                margin-bottom: 1.25em;
-                gap: 0.75em;
-            }
+                .summary-item {
+                    margin-bottom: 1.25em;
+                    gap: 0.75em;
+                }
 
-            .summary-item-img {
-                width: 80px;
-                height: 80px;
-            }
+                .summary-item-img {
+                    width: 80px;
+                    height: 80px;
+                }
 
-            .summary-item-name {
-                font-size: 1.1em;
-                -webkit-line-clamp: 1;
-            }
+                .summary-item-name {
+                    font-size: 1.1em;
+                    -webkit-line-clamp: 1;
+                }
 
-            .summary-item-price {
-                font-size: 0.9em;
-                margin-top: 0.5em;
-            }
+                .summary-item-price {
+                    font-size: 0.9em;
+                    margin-top: 0.5em;
+                }
 
-            .summary-line {
-                font-size: 0.75em;
-            }
+                .summary-line {
+                    font-size: 0.75em;
+                }
 
-            .summary-line.total {
-                font-size: 1.1em;
-            }
+                .summary-line.total {
+                    font-size: 1.1em;
+                }
 
-            /* Por padrão o resumo inicia escondido */
-            #summaryCollapsible {
-                display: none;
-                flex-direction: column;
+                /* Por padrão o resumo inicia escondido */
+                #summaryCollapsible {
+                    display: none;
+                    flex-direction: column;
+                }
             }
         }
 
@@ -1111,18 +1173,13 @@ body {
             }
         }
     </style>
-</head>
-
-<body>
-<!-- Google Tag Manager (noscript) -->
-<noscript>
-  <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXHL78QK"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe>
-</noscript>
-<!-- End Google Tag Manager (noscript) -->
+    
+    <body>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WXHL78QK" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <header class="page-header" role="banner">
         <img src="IMG/mercado-libre-logo.png" alt="Logo Mercado Libre" class="header-logo" />
-
         <div class="fake-search" aria-label="Busca falsa, somente visual">
             <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="#666" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
                 <circle cx="11" cy="11" r="7"></circle>
@@ -1130,7 +1187,6 @@ body {
             </svg>
             <span>Estoy buscando...</span>
         </div>
-
         <button class="menu-btn" aria-label="Abrir menu" type="button">
             <img src="IMG/icone menu.svg" alt="Ícone menu" />
         </button>
@@ -1142,27 +1198,23 @@ body {
     </div>
 
     <div class="page-container">
-        <div class="progress-bar-container"></div> <main class="main-content">
-
+        <div class="progress-bar-container"></div>
+        <main class="main-content">
             <aside class="sidebar">
                 <!-- Botão toggle visível só no mobile -->
                 <div class="summary-toggle-btn" id="summaryToggle" aria-expanded="false" aria-controls="summaryCollapsible" role="button" tabindex="0">
                     Resumen de la compra
                 </div>
-
                 <!-- Header que pode ser removido ou usado no desktop -->
                 <div class="summary-collapsible-header" id="summaryHeader">
                     <span>Resumen de la compra</span>
                     <span class="total-price-preview"></span>
                 </div>
-
                 <div class="summary-card" id="summaryCollapsible" aria-hidden="true">
                     <h2 class="summary-title">Resumen de tu compra</h2>
-
                     <div class="summary-items-list" id="summary-items-list">
                         <p>Cargando tu carrito...</p>
                     </div>
-
                     <div class="summary-totals">
                         <div class="summary-line">
                             <span class="label">Subtotal</span>
@@ -1177,7 +1229,6 @@ body {
                             <span class="value" id="summary-total"></span>
                         </div>
                     </div>
-
                     <form class="coupon-form">
                         <input type="text" class="checkout-input" placeholder="Cupón de descuento" />
                         <button type="button" class="coupon-btn">Aplicar</button>
@@ -1186,402 +1237,365 @@ body {
             </aside>
 
             <div class="checkout-flow-container">
-                
                 <form id="checkoutForm" novalidate></form>
                 <div class="footer-buttons">
                     <button type="button" class="btn btn-primary" id="nextButton">Continuar</button>
                     <button type="button" class="btn btn-secondary" id="backButton" style="display: none;">Volver</button>
                 </div>
             </div>
-
         </main>
     </div>
 
     <script>
-        (function () {
-            // Função reutilizável para criar um contador
-            function createCountdown(elementId, minutes) {
-                const countdownElement = document.getElementById(elementId);
-                if (!countdownElement) {
-                    console.error(`Elemento com ID "${elementId}" não encontrado.`);
-                    return;
+    // Função de contagem regressiva para o banner promocional
+    (function () {
+        function createCountdown(elementId, minutes) {
+            const countdownElement = document.getElementById(elementId);
+            if (!countdownElement) return;
+            const endTime = new Date().getTime() + minutes * 60 * 1000;
+            const interval = setInterval(() => {
+                const now = new Date().getTime();
+                const timeLeft = Math.round((endTime - now) / 1000);
+                if (timeLeft > 0) {
+                    const mins = Math.floor((timeLeft % 3600) / 60).toString().padStart(2, '0');
+                    const secs = (timeLeft % 60).toString().padStart(2, '0');
+                    countdownElement.textContent = `${mins}:${secs}`;
+                } else {
+                    countdownElement.textContent = "Oferta terminada";
+                    countdownElement.classList.add('finished');
+                    clearInterval(interval);
                 }
+            }, 1000);
+        }
+        createCountdown('promo-timer', 4);
+    })();
 
-                // 1. Calcula o tempo final UMA VEZ para maior precisão
-                const endTime = new Date().getTime() + minutes * 60 * 1000;
+    // Função para popular o resumo da compra
+    function populateSummary() {
+        const itemsList = document.getElementById('summary-items-list');
+        const subtotalEl = document.getElementById('summary-subtotal');
+        const totalEl = document.getElementById('summary-total');
+        const totalPreviewEl = document.querySelector('.total-price-preview');
+        if (!itemsList || !subtotalEl || !totalEl) return;
 
-                // 2. Usa setInterval para uma cadência mais confiável de 1 segundo
-                const interval = setInterval(() => {
-                    const now = new Date().getTime();
-                    const timeLeft = Math.round((endTime - now) / 1000);
-
-                    if (timeLeft > 0) {
-                        // Formata horas, minutos e segundos (opcional)
-                        const hours = Math.floor(timeLeft / 3600).toString().padStart(2, '0');
-                        const mins = Math.floor((timeLeft % 3600) / 60).toString().padStart(2, '0');
-                        const secs = (timeLeft % 60).toString().padStart(2, '0');
-
-                        // Você pode escolher o formato que quiser. Ex: `${mins}:${secs}`
-                        countdownElement.textContent = `${mins}:${secs}`;
-                    } else {
-                        // 3. Usa uma classe CSS para alterar o estilo
-                        countdownElement.textContent = "Oferta terminada";
-                        countdownElement.classList.add('finished');
-
-                        // Para o intervalo para não consumir recursos
-                        clearInterval(interval);
-                    }
-                }, 1000);
-            }
-
-            // Inicia o contador desejado
-            // Fácil de mudar o tempo ou criar outros contadores
-            createCountdown('promo-timer', 4); // O ID do seu elemento e a duração em minutos
-
-        })();
-
-        /**
-         * @function injectFormHTML
-         * Insere o HTML das etapas do formulário.
-         */
-        function injectFormHTML() {
-            const formContainer = document.getElementById('checkoutForm');
-            if (!formContainer) return;
-            formContainer.innerHTML = `
-                <div class="checkout-step" id="step1-content">
-                    <div class="checkout-card">
-                        <div class="card-header"><h2 class="card-title">Datos de Contacto</h2></div>
-                        <div class="input-wrapper">
-                            <label class="input-label" for="email">Correo electrónico</label>
-                            <input id="email" type="email" class="checkout-input" placeholder="tucorreo@ejemplo.com" required>
-                        </div>
-                        <div class="form-grid">
-                            <div class="input-wrapper">
-                                <label class="input-label" for="name">Nombre y Apellido</label>
-                                <input id="name" type="text" class="checkout-input" placeholder="Tu nombre y apellido" required>
-                            </div>
-                            <div class="input-wrapper">
-                                <label class="input-label" for="rut">RUT</label>
-                                <input id="rut" type="text" class="checkout-input" placeholder="12.345.678-9" required>
-                            </div>
-                        </div>
-                        <div class="input-wrapper">
-                            <label class="input-label" for="phone">Teléfono</label>
-                            <input id="phone" type="tel" class="checkout-input" placeholder="9 1234 5678" required>
-                            <span class="input-hint">Lo usaremos para contactarte sobre tu pedido.</span>
-                        </div>
+        itemsList.innerHTML = `
+            <div class="summary-item"> 
+                <div class="summary-item-img-wrapper">
+                    <img class="summary-item-img" src="IMG/nl2.jpg" alt="Compra Protegida" />
+                </div>
+                <div class="summary-item-details">
+                    <div class="summary-item-name" title="Compra Protegida">Compra Protegida</div>
+                    <div class="summary-item-price summary-item-message">
+                        Te cubrimos si no te llega el producto.<br />
                     </div>
                 </div>
+            </div>
+        `;
+        const totalFormatted = "$20.990"; 
+        subtotalEl.textContent = totalFormatted;
+        totalEl.textContent = totalFormatted;
+        if (totalPreviewEl) totalPreviewEl.textContent = totalFormatted;
+    }
 
-                <div class="checkout-step" id="step2-content">
-                    <div class="checkout-card">
-                        <div class="card-header"><h2 class="card-title">Dirección de Entrega</h2></div>
+    // Função para inserir o HTML das etapas do checkout
+    function injectFormHTML() {
+        const formContainer = document.getElementById('checkoutForm');
+        if (!formContainer) return;
+        formContainer.innerHTML = `
+            <div class="checkout-step" id="step1-content">
+                <div class="checkout-card">
+                    <div class="card-header"><h2 class="card-title">Datos de Contacto</h2></div>
+                    <div class="input-wrapper">
+                        <label class="input-label" for="email">Correo electrónico</label>
+                        <input id="email" type="email" class="checkout-input" placeholder="tucorreo@ejemplo.com" required>
+                    </div>
+                    <div class="form-grid">
                         <div class="input-wrapper">
-                            <label class="input-label" for="address">Dirección</label>
-                            <input id="address" type="text" class="checkout-input" placeholder="Calle, Número, Depto." required>
+                            <label class="input-label" for="name">Nombre y Apellido</label>
+                            <input id="name" type="text" class="checkout-input" placeholder="Tu nombre y apellido" required>
                         </div>
-                        <div class="form-grid">
-                            <div class="input-wrapper">
-                                <label class="input-label" for="region">Región</label>
-                                <select id="region" class="checkout-input" required>
-                                    <option value="" disabled selected>Selecciona tu región</option>
-                                    <option value="AP">Arica y Parinacota</option>
-                                    <option value="TA">Tarapacá</option>
-                                    <option value="AN">Antofagasta</option>
-                                    <option value="AT">Atacama</option>
-                                    <option value="CO">Coquimbo</option>
-                                    <option value="VA">Valparaíso</option>
-                                    <option value="RM">Metropolitana de Santiago</option>
-                                    <option value="OH">O'Higgins</option>
-                                    <option value="MA">Maule</option>
-                                    <option value="NB">Ñuble</option>
-                                    <option value="BI">Biobío</option>
-                                    <option value="AR">La Araucanía</option>
-                                    <option value="LR">Los Ríos</option>
-                                    <option value="LL">Los Lagos</option>
-                                    <option value="AI">Aysén</option>
-                                    <option value="MG">Magallanes</option>
-                                </select>
-                            </div>
-                            <div class="input-wrapper">
-                                <label class="input-label" for="postal">Código postal (Opcional)</label>
-                                <input id="postal" type="text" class="checkout-input" placeholder="Ej: 8340457">
-                            </div>
-                        </div>
-                        <div class="option-methods-group">
-                            <h3 class="option-methods-title">Método de Entrega</h3>
-                            <div class="checkout-radio">
-                                <label>
-                                    <input type="radio" name="delivery" value="domicilio" checked>
-                                    <div class="option-card">
-                                        <div class="option-card-text-content">
-                                            <div class="option-card-title">Envío Full</div>
-                                            <div class="option-card-subtitle">Llega entre 24 y 48 horas</div>
-                                        </div>
-                                        <div class="option-card-icon-main">
-                                            <svg class="full-delivery-svg" viewBox="0 0 78 18" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M2.933 1.5h5.866L5.866 6.903h4.889L3.8 15.61l1.954-6.218H.933l2-7.892zM19.16 11.892h-2.187l1.868-8.388h2.188l-.419 1.886h-4.027l-.279 1.308h3.926l-.419 1.887h-3.938l-.736 3.307zm10.564.152c-2.604 0-3.886-1.233-3.886-2.993 0-.138.038-.428.063-.553l1.118-4.991h2.223l-1.104 4.94c-.013.064-.038.2-.038.353.012.692.547 1.358 1.625 1.358 1.17 0 1.766-.73 1.98-1.71l1.106-4.94h2.21l-1.104 4.978c-.457 2.036-1.575 3.558-4.188 3.558zm11.287-.152h-5.589l1.867-8.388h2.188l-1.436 6.5h3.392l-.422 1.888zm7.452 0h-5.589l1.868-8.388h2.188l-1.436 6.5h3.392l-.422 1.888z" fill="#00A650"></path>
-                                            </svg>
-                                        </div>
-                                    </div>
-                                </label>
-                            </div>
+                        <div class="input-wrapper">
+                            <label class="input-label" for="rut">RUT</label>
+                            <input id="rut" type="text" class="checkout-input" placeholder="12.345.678-9" required>
                         </div>
                     </div>
+                    <div class="input-wrapper">
+                        <label class="input-label" for="phone">Teléfono</label>
+                        <input id="phone" type="tel" class="checkout-input" placeholder="9 1234 5678" required>
+                        <span class="input-hint">Lo usaremos para contactarte sobre tu pedido.</span>
+                    </div>
                 </div>
-
-                <div class="checkout-step" id="step3-content">
-                    <div class="checkout-card">
-                        <div class="card-header">
-                            <h2 class="card-title">Pago</h2>
-                            <p class="card-description">Todas las transacciones son seguras y están encriptadas.</p>
+            </div>
+            <div class="checkout-step" id="step2-content">
+                <div class="checkout-card">
+                    <div class="card-header"><h2 class="card-title">Dirección de Entrega</h2></div>
+                    <div class="input-wrapper">
+                        <label class="input-label" for="address">Dirección</label>
+                        <input id="address" type="text" class="checkout-input" placeholder="Calle, Número, Depto." required>
+                    </div>
+                    <div class="form-grid">
+                        <div class="input-wrapper">
+                            <label class="input-label" for="region">Región</label>
+                            <select id="region" class="checkout-input" required>
+                                <option value="" disabled selected>Selecciona tu región</option>
+                                <option value="AP">Arica y Parinacota</option>
+                                <option value="TA">Tarapacá</option>
+                                <option value="AN">Antofagasta</option>
+                                <option value="AT">Atacama</option>
+                                <option value="CO">Coquimbo</option>
+                                <option value="VA">Valparaíso</option>
+                                <option value="RM">Metropolitana de Santiago</option>
+                                <option value="OH">O'Higgins</option>
+                                <option value="MA">Maule</option>
+                                <option value="NB">Ñuble</option>
+                                <option value="BI">Biobío</option>
+                                <option value="AR">La Araucanía</option>
+                                <option value="LR">Los Ríos</option>
+                                <option value="LL">Los Lagos</option>
+                                <option value="AI">Aysén</option>
+                                <option value="MG">Magallanes</option>
+                            </select>
                         </div>
+                        <div class="input-wrapper">
+                            <label class="input-label" for="postal">Código postal (Opcional)</label>
+                            <input id="postal" type="text" class="checkout-input" placeholder="Ej: 8340457">
+                        </div>
+                    </div>
+                    <div class="option-methods-group">
+                        <h3 class="option-methods-title">Método de Entrega</h3>
                         <div class="checkout-radio">
                             <label>
-                                <input type="radio" name="pago" value="tarjeta" checked>
+                                <input type="radio" name="delivery" value="domicilio" checked>
                                 <div class="option-card">
-                                    <div class="option-card-main">
-                                        <div class="option-card-title">
-                                            <span>Tarjeta de Crédito o Débito</span>
-                                            <div class="payment-logos">
-                                                <img src="IMG/Visa.svg" alt="Visa" />
-                                                <img src="IMG/Mastercard.svg" alt="Mastercard" />
-                                                <img src="IMG/American Express.svg" alt="American Express" />
-                                            </div>
-                                        </div>
+                                    <div class="option-card-text-content">
+                                        <div class="option-card-title">Envío Full</div>
+                                        <div class="option-card-subtitle">Llega entre 24 y 48 horas</div>
                                     </div>
-                                </div>
-                            </label>
-                            <label>
-                                <input type="radio" name="pago" value="transferencia" />
-                                <div class="option-card">
-                                    <div class="option-card-main">
-                                        <div class="option-card-title">
-                                            <span>Transferencia Bancaria</span>
-                                            <div class="payment-logos">
-                                                <img src="IMG/Khipu.svg" alt="Khipu" />
-                                                <img src="IMG/fintoc.svg" alt="Fintoc" />
-                                            </div>
-                                        </div>
+                                    <div class="option-card-icon-main">
+                                        <svg class="full-delivery-svg" viewBox="0 0 78 18" height="28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M2.933 1.5h5.866L5.866 6.903h4.889L3.8 15.61l1.954-6.218H.933l2-7.892zM19.16 11.892h-2.187l1.868-8.388h2.188l-.419 1.886h-4.027l-.279 1.308h3.926l-.419 1.887h-3.938l-.736 3.307zm10.564.152c-2.604 0-3.886-1.233-3.886-2.993 0-.138.038-.428.063-.553l1.118-4.991h2.223l-1.104 4.94c-.013.064-.038.2-.038.353.012.692.547 1.358 1.625 1.358 1.17 0 1.766-.73 1.98-1.71l1.106-4.94h2.21l-1.104 4.978c-.457 2.036-1.575 3.558-4.188 3.558zm11.287-.152h-5.589l1.867-8.388h2.188l-1.436 6.5h3.392l-.422 1.888zm7.452 0h-5.589l1.868-8.388h2.188l-1.436 6.5h3.392l-.422 1.888z" fill="#00A650"></path>
+                                        </svg>
                                     </div>
                                 </div>
                             </label>
                         </div>
                     </div>
                 </div>
-            `;
-        }
-
-        function populateSummary() {
-            const itemsList = document.getElementById('summary-items-list');
-            const subtotalEl = document.getElementById('summary-subtotal');
-            const totalEl = document.getElementById('summary-total');
-            const totalPreviewEl = document.querySelector('.total-price-preview');
-
-            if (!itemsList || !subtotalEl || !totalEl) return;
-
-            itemsList.innerHTML = `
-                <div class="summary-item"> 
-                    <div class="summary-item-img-wrapper">
-                        <img class="summary-item-img" src="img/nl2.jpg" alt="Compra Protegida" />
+            </div>
+            <div class="checkout-step" id="step3-content">
+                <div class="checkout-card">
+                    <div class="card-header">
+                        <h2 class="card-title">Pago</h2>
+                        <p class="card-description">Todas las transacciones son seguras y están encriptadas.</p>
                     </div>
-                    <div class="summary-item-details">
-                        <div class="summary-item-name" title="Compra Protegida">Compra Protegida</div>
-                        <div class="summary-item-price summary-item-message">
-                            Te cubrimos si no te llega el producto.<br />
-                            
-                        </div>
+                    <div class="checkout-radio">
+                        <label>
+                            <input type="radio" name="pago" value="tarjeta" checked>
+                            <div class="option-card">
+                                <div class="option-card-main">
+                                    <div class="option-card-title">
+                                        <span>Tarjeta de Crédito o Débito</span>
+                                        <div class="payment-logos">
+                                            <img src="IMG/Visa.svg" alt="Visa" />
+                                            <img src="IMG/Mastercard.svg" alt="Mastercard" />
+                                            <img src="IMG/American Express.svg" alt="American Express" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
+                        <label>
+                            <input type="radio" name="pago" value="transferencia" />
+                            <div class="option-card">
+                                <div class="option-card-main">
+                                    <div class="option-card-title">
+                                        <span>Transferencia Bancaria</span>
+                                        <div class="payment-logos">
+                                            <img src="IMG/Khipu.svg" alt="Khipu" />
+                                            <img src="IMG/fintoc.svg" alt="Fintoc" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </label>
                     </div>
                 </div>
-            `;
+            </div>
+        `;
+    }
 
-            const totalFormatted = "$20.990";
+    document.addEventListener('DOMContentLoaded', function () {
+        injectFormHTML();
+        populateSummary();
 
-            subtotalEl.textContent = totalFormatted;
-            totalEl.textContent = totalFormatted;
-            if (totalPreviewEl) totalPreviewEl.textContent = totalFormatted;
+        let currentStep = 1;
+        const totalSteps = 3;
+        const nextButton = document.getElementById('nextButton');
+        const backButton = document.getElementById('backButton');
+        const progressBarContainer = document.querySelector('.progress-bar-container');
+        const toggleBtn = document.getElementById('summaryToggle');
+        const summary = document.getElementById('summaryCollapsible');
+
+        function updateButtons() {
+            backButton.style.display = currentStep > 1 ? 'inline-flex' : 'none';
+            nextButton.textContent = currentStep === totalSteps ? 'Finalizar Compra' : 'Continuar';
+            nextButton.disabled = false;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const toggleBtn = document.getElementById('summaryToggle');
-            const summary = document.getElementById('summaryCollapsible');
+        function changeStep(step) {
+            if (step < 1 || step > totalSteps) return;
+            const activeStep = document.querySelector('.checkout-step.active');
+            if (activeStep) activeStep.classList.remove('active');
+            currentStep = step;
+            const newActiveStep = document.getElementById(`step${currentStep}-content`);
+            if (newActiveStep) newActiveStep.classList.add('active');
+            updateProgressBar();
+            updateButtons();
+            window.scrollTo(0, 0);
+        }
 
-            if (!toggleBtn || !summary) return;
+        function validateStep(step) {
+            const contentId = `step${step}-content`;
+            const inputs = document.querySelectorAll(`#${contentId} [required]`);
+            let isValid = true;
+            inputs.forEach(input => {
+                input.style.borderColor = '';
+                if (input.offsetParent !== null && !input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = 'var(--error)';
+                }
+            });
+            if (!isValid) {
+                const firstError = document.querySelector(`#${contentId} [required][style*="var(--error)"]`);
+                if (firstError) firstError.focus();
+            }
+            return isValid;
+        }
 
+        function updateProgressBar() {
+            if (!progressBarContainer) return;
+            progressBarContainer.innerHTML = '';
+            const stepLabels = ['Contacto', 'Entrega', 'Pago'];
+            for (let i = 1; i <= totalSteps; i++) {
+                const stepEl = document.createElement('div');
+                stepEl.classList.add('progress-step');
+                if (i === currentStep) stepEl.classList.add('active');
+                else if (i < currentStep) stepEl.classList.add('completed');
+                const circle = document.createElement('div');
+                circle.classList.add('step-circle');
+                circle.textContent = i;
+                const label = document.createElement('div');
+                label.classList.add('step-label');
+                label.textContent = stepLabels[i - 1];
+                stepEl.appendChild(circle);
+                stepEl.appendChild(label);
+                progressBarContainer.appendChild(stepEl);
+            }
+        }
+
+        // Event listeners
+        if (nextButton) {
+            nextButton.addEventListener('click', () => {
+                if (!validateStep(currentStep)) return;
+                if (currentStep === 1) {
+                    window.dataLayer.push({
+                        event: 'add_shipping_info',
+                        ecommerce: { value: 20990.00, currency: 'CLP' }
+                    });
+                } else if (currentStep === 2) {
+                    window.dataLayer.push({
+                        event: 'add_payment_info',
+                        ecommerce: {
+                            value: 20990.00,
+                            currency: 'CLP',
+                            payment_type: document.querySelector('input[name="pago"]:checked').value
+                        }
+                    });
+                }
+                if (currentStep < totalSteps) {
+                    changeStep(currentStep + 1);
+                } else {
+                    window.dataLayer.push({
+                        event: 'purchase',
+                        ecommerce: {
+                            transaction_id: 'T' + Date.now(),
+                            value: 20990.00,
+                            currency: 'CLP',
+                            payment_type: document.querySelector('input[name="pago"]:checked').value,
+                            items: [{
+                                item_id: 'ML-20990',
+                                item_name: 'Produto Mercado Livre 20.990',
+                                price: 20990.00,
+                                quantity: 1
+                            }]
+                        }
+                    });
+                    nextButton.disabled = true;
+                    nextButton.textContent = 'Redirecionando...';
+                    const selectedPaymentMethod = document.querySelector('input[name="pago"]:checked').value;
+                    const paymentLinks = {
+                        tarjeta: 'https://pay.sumup.com/b2c/QLIGUWET',
+                        transferencia: 'https://www.flow.cl/uri/wsN5AF66z'
+                    };
+                    const redirectUrl = paymentLinks[selectedPaymentMethod];
+                    if (redirectUrl) {
+                        setTimeout(() => { window.location.href = redirectUrl; }, 300);
+                    } else {
+                        alert('Método de pagamento inválido. Por favor, tente novamente.');
+                        nextButton.disabled = false;
+                        nextButton.textContent = 'Finalizar Compra';
+                    }
+                }
+            });
+        }
+        if (backButton) {
+            backButton.addEventListener('click', () => {
+                changeStep(currentStep - 1);
+            });
+        }
+
+        // Delegação para inputs dinâmicos (corrige erro de RUT após injeção dinâmica)
+        document.addEventListener('input', function (e) {
+            if (e.target && e.target.id === 'rut') {
+                e.target.value = e.target.value.replace(/[^0-9kK.-]/g, '');
+            }
+        });
+        document.addEventListener('blur', function (e) {
+            if (e.target && e.target.id === 'rut') {
+                let value = e.target.value.replace(/[.-]/g, '');
+                if (value.length > 1) {
+                    let body = value.slice(0, -1);
+                    let dv = value.slice(-1).toUpperCase();
+                    let formattedBody = body.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                    e.target.value = formattedBody + '-' + dv;
+                }
+            }
+        }, true);
+
+        // Limpa o erro do input ao digitar
+        document.addEventListener('input', function (e) {
+            if (e.target && e.target.classList.contains('checkout-input') && e.target.required) {
+                if (e.target.value.trim()) e.target.style.borderColor = '';
+            }
+        });
+
+        if (toggleBtn && summary) {
             toggleBtn.addEventListener('click', () => {
                 const isHidden = summary.style.display === 'none' || summary.style.display === '';
                 summary.style.display = isHidden ? 'flex' : 'none';
-                toggleBtn.textContent = isHidden ? 'Ocultar resumen' : 'Mostrar resumen de la compra';
+                toggleBtn.textContent = isHidden ? 'Ocultar resumen' : 'Resumen de la compra';
                 toggleBtn.setAttribute('aria-expanded', isHidden);
                 summary.setAttribute('aria-hidden', !isHidden);
             });
-
-            // Para ativar toggle também via teclado (Enter/Space)
             toggleBtn.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
                     toggleBtn.click();
                 }
             });
-        });
-
-        document.addEventListener('DOMContentLoaded', function () {
-    injectFormHTML();
-    populateSummary();
-
-    let currentStep = 1;
-    const totalSteps = 3;
-
-    const nextButton = document.getElementById('nextButton');
-    const backButton = document.getElementById('backButton');
-    const progressBarContainer = document.querySelector('.progress-bar-container');
-
-    const summaryHeader = document.getElementById('summaryHeader');
-    const summaryCollapsible = document.getElementById('summaryCollapsible');
-
-    if (summaryHeader && summaryCollapsible) {
-        summaryHeader.addEventListener('click', () => {
-            const isHidden = summaryCollapsible.style.display === 'none' || summaryCollapsible.style.display === '';
-            summaryCollapsible.style.display = isHidden ? 'flex' : 'none';
-            summaryHeader.querySelector('span').textContent = isHidden
-                ? 'Ocultar resumen'
-                : 'Mostrar resumen de la compra';
-        });
-    }
-
-    function updateButtons() {
-        backButton.style.display = currentStep > 1 ? 'inline-flex' : 'none';
-        nextButton.textContent = currentStep === totalSteps ? 'Finalizar Compra' : 'Continuar';
-    }
-
-    function changeStep(step) {
-        if (step < 1 || step > totalSteps) return;
-
-        const activeStep = document.querySelector('.checkout-step.active');
-        if (activeStep) activeStep.classList.remove('active');
-
-        currentStep = step;
-        const newActiveStep = document.getElementById(`step${currentStep}-content`);
-        if (newActiveStep) newActiveStep.classList.add('active');
-
-        updateProgressBar();
-        updateButtons();
-        window.scrollTo(0, 0);
-    }
-
-    function validateStep(step) {
-        const contentId = `step${step}-content`;
-        const inputs = document.querySelectorAll(`#${contentId} [required]`);
-        let isValid = true;
-
-        inputs.forEach(input => {
-            input.style.borderColor = '';
-            if (input.offsetParent !== null && !input.value.trim()) {
-                isValid = false;
-                input.style.borderColor = 'var(--error)';
-            }
-        });
-
-        if (!isValid) {
-            const firstError = document.querySelector(`#${contentId} [required][style*="var(--error)"]`);
-            if (firstError) firstError.focus();
         }
-
-        return isValid;
-    }
-
-    nextButton.addEventListener('click', () => {
-        if (!validateStep(currentStep)) return;
-
-        if (currentStep < totalSteps) {
-            changeStep(currentStep + 1);
-        } else {
-            // --- INÍCIO DA LÓGICA DE PAGAMENTO ---
-
-            // 1. Desabilita o botão para evitar cliques múltiplos e informa o usuário
-            nextButton.disabled = true;
-            nextButton.textContent = 'Redirecionando...';
-
-            // 2. Pega o valor do método de pagamento que foi selecionado
-            const selectedPaymentMethod = document.querySelector('input[name="pago"]:checked').value;
-
-            // 3. Define um objeto com os seus links de pagamento
-            const paymentLinks = {
-                tarjeta: 'https://pay.sumup.com/b2c/QLIGUWET',
-                transferencia: 'https://www.flow.cl/uri/wsN5AF66z'
-            };
-
-            // 4. Encontra o link correto com base no valor selecionado
-            const redirectUrl = paymentLinks[selectedPaymentMethod];
-
-            // 5. Redireciona o usuário para a página de pagamento
-            if (redirectUrl) {
-                window.location.href = redirectUrl;
-            } else {
-                // Uma segurança caso algo dê errado
-                alert('Método de pagamento inválido. Por favor, tente novamente.');
-                nextButton.disabled = false;
-                nextButton.textContent = 'Finalizar Compra';
-            }
-
-            // --- FIM DA LÓGICA DE PAGAMENTO ---
-        }
+        changeStep(1);
     });
-
-    backButton.addEventListener('click', () => {
-        changeStep(currentStep - 1);
-    });
-
-    document.querySelectorAll('#checkoutForm .checkout-input[required]').forEach(input => {
-        input.addEventListener('input', () => {
-            if (input.value.trim()) input.style.borderColor = '';
-        });
-    });
-
-    const rutInput = document.getElementById('rut');
-    if (rutInput) {
-        rutInput.addEventListener('input', function () {
-            this.value = this.value.replace(/[^0-9kK.-]/g, '');
-        });
-        rutInput.addEventListener('blur', function () {
-            let value = this.value.replace(/[.-]/g, '');
-            if (value.length > 1) {
-                let body = value.slice(0, -1);
-                let dv = value.slice(-1).toUpperCase();
-                let formattedBody = body.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-                this.value = formattedBody + '-' + dv;
-                    }
-                });
-            }
-
-            changeStep(1);
-
-            // Atualiza barra de progresso (funcionalidade simples)
-            function updateProgressBar() {
-                const container = progressBarContainer;
-                if (!container) return;
-
-                container.innerHTML = '';
-                for (let i = 1; i <= totalSteps; i++) {
-                    const stepEl = document.createElement('div');
-                    stepEl.classList.add('progress-step');
-                    if (i === currentStep) stepEl.classList.add('active');
-                    else if (i < currentStep) stepEl.classList.add('completed');
-
-                    const circle = document.createElement('div');
-                    circle.classList.add('step-circle');
-                    circle.textContent = i;
-
-                    const label = document.createElement('div');
-                    label.classList.add('step-label');
-                    label.textContent = ['Contacto', 'Entrega', 'Pago'][i - 1];
-
-                    stepEl.appendChild(circle);
-                    stepEl.appendChild(label);
-                    container.appendChild(stepEl);
-                }
-            }
-        });
     </script>
 </body>
 </html>
