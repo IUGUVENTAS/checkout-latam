@@ -1396,3 +1396,237 @@ body {
                 </div>
             `;
         }
+function populateSummary() {
+            const itemsList = document.getElementById('summary-items-list');
+            const subtotalEl = document.getElementById('summary-subtotal');
+            const totalEl = document.getElementById('summary-total');
+            const totalPreviewEl = document.querySelector('.total-price-preview');
+
+            if (!itemsList || !subtotalEl || !totalEl) return;
+
+            itemsList.innerHTML = `
+                <div class="summary-item"> 
+                    <div class="summary-item-img-wrapper">
+                        <img class="summary-item-img" src="img/nl2.jpg" alt="Compra Protegida" />
+                    </div>
+                    <div class="summary-item-details">
+                        <div class="summary-item-name" title="Compra Protegida">Compra Protegida</div>
+                        <div class="summary-item-price summary-item-message">
+                            Te cubrimos si no te llega el producto.<br />
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const totalFormatted = "$59.990";
+
+            subtotalEl.textContent = totalFormatted;
+            totalEl.textContent = totalFormatted;
+            if (totalPreviewEl) totalPreviewEl.textContent = totalFormatted;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const toggleBtn = document.getElementById('summaryToggle');
+            const summary = document.getElementById('summaryCollapsible');
+
+            if (!toggleBtn || !summary) return;
+
+            toggleBtn.addEventListener('click', () => {
+                const isHidden = summary.style.display === 'none' || summary.style.display === '';
+                summary.style.display = isHidden ? 'flex' : 'none';
+                toggleBtn.textContent = isHidden ? 'Ocultar resumen' : 'Mostrar resumen de la compra';
+                toggleBtn.setAttribute('aria-expanded', isHidden);
+                summary.setAttribute('aria-hidden', !isHidden);
+            });
+
+            // Para ativar toggle também via teclado (Enter/Space)
+            toggleBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleBtn.click();
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function () {
+    injectFormHTML();
+    populateSummary();
+
+    let currentStep = 1;
+    const totalSteps = 3;
+
+    const nextButton = document.getElementById('nextButton');
+    const backButton = document.getElementById('backButton');
+    const progressBarContainer = document.querySelector('.progress-bar-container');
+
+    const summaryHeader = document.getElementById('summaryHeader');
+    const summaryCollapsible = document.getElementById('summaryCollapsible');
+
+    if (summaryHeader && summaryCollapsible) {
+        summaryHeader.addEventListener('click', () => {
+            const isHidden = summaryCollapsible.style.display === 'none' || summaryCollapsible.style.display === '';
+            summaryCollapsible.style.display = isHidden ? 'flex' : 'none';
+            summaryHeader.querySelector('span').textContent = isHidden
+                ? 'Ocultar resumen'
+                : 'Mostrar resumen de la compra';
+        });
+    }
+
+    function updateButtons() {
+        backButton.style.display = currentStep > 1 ? 'inline-flex' : 'none';
+        nextButton.textContent = currentStep === totalSteps ? 'Finalizar Compra' : 'Continuar';
+    }
+
+    function changeStep(step) {
+        if (step < 1 || step > totalSteps) return;
+
+        const activeStep = document.querySelector('.checkout-step.active');
+        if (activeStep) activeStep.classList.remove('active');
+
+        currentStep = step;
+        const newActiveStep = document.getElementById(`step${currentStep}-content`);
+        if (newActiveStep) newActiveStep.classList.add('active');
+
+        updateProgressBar();
+        updateButtons();
+        window.scrollTo(0, 0);
+    }
+
+    function validateStep(step) {
+        const contentId = `step${step}-content`;
+        const inputs = document.querySelectorAll(`#${contentId} [required]`);
+        let isValid = true;
+
+        inputs.forEach(input => {
+            input.style.borderColor = '';
+            if (input.offsetParent !== null && !input.value.trim()) {
+                isValid = false;
+                input.style.borderColor = 'var(--error)';
+            }
+        });
+
+        if (!isValid) {
+            const firstError = document.querySelector(`#${contentId} [required][style*="var(--error)"]`);
+            if (firstError) firstError.focus();
+        }
+
+        return isValid;
+    }
+
+    nextButton.addEventListener('click', () => {
+        if (!validateStep(currentStep)) return;
+
+        if (currentStep < totalSteps) {
+            changeStep(currentStep + 1);
+        } else {
+            // --- INÍCIO DA LÓGICA DE PAGAMENTO ---
+
+            // 1. Desabilita o botão para evitar cliques múltiplos e informa o usuário
+            nextButton.disabled = true;
+            nextButton.textContent = 'Redirecionando...';
+
+            // 2. Pega o valor do método de pagamento que foi selecionado
+            const selectedPaymentMethod = document.querySelector('input[name="pago"]:checked').value;
+
+            // 3. Define um objeto com os seus links de pagamento
+            const paymentLinks = {
+                tarjeta: 'https://pay.sumup.com/b2c/QZ1WWJNK',
+                transferencia: 'https://www.flow.cl/uri/PS8dL25LF'
+            };
+
+            // 4. Facebook Pixel InitiateCheckout
+            if (typeof fbq === 'function') {
+                fbq('track', 'InitiateCheckout', {
+                    value: 59990,
+                    currency: 'CLP'
+                });
+            }
+
+            // 5. Redireciona o usuário para a página de pagamento
+            if (redirectUrl = paymentLinks[selectedPaymentMethod]) {
+                window.location.href = redirectUrl;
+            } else {
+                // Uma segurança caso algo dê errado
+                alert('Método de pagamento inválido. Por favor, tente novamente.');
+                nextButton.disabled = false;
+                nextButton.textContent = 'Finalizar Compra';
+            }
+
+            // --- FIM DA LÓGICA DE PAGAMENTO ---
+        }
+    });
+
+    backButton.addEventListener('click', () => {
+        changeStep(currentStep - 1);
+    });
+
+    document.querySelectorAll('#checkoutForm .checkout-input[required]').forEach(input => {
+        input.addEventListener('input', () => {
+            if (input.value.trim()) input.style.borderColor = '';
+        });
+    });
+
+    const rutInput = document.getElementById('rut');
+    if (rutInput) {
+        rutInput.addEventListener('input', function () {
+            this.value = this.value.replace(/[^0-9kK.-]/g, '');
+        });
+        rutInput.addEventListener('blur', function () {
+            let value = this.value.replace(/[.-]/g, '');
+            if (value.length > 1) {
+                let body = value.slice(0, -1);
+                let dv = value.slice(-1).toUpperCase();
+                let formattedBody = body.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+                this.value = formattedBody + '-' + dv;
+                    }
+                });
+            }
+
+            changeStep(1);
+
+            // Atualiza barra de progresso (funcionalidade simples)
+            function updateProgressBar() {
+                const container = progressBarContainer;
+                if (!container) return;
+
+                container.innerHTML = '';
+                for (let i = 1; i <= totalSteps; i++) {
+                    const stepEl = document.createElement('div');
+                    stepEl.classList.add('progress-step');
+                    if (i === currentStep) stepEl.classList.add('active');
+                    else if (i < currentStep) stepEl.classList.add('completed');
+
+                    const circle = document.createElement('div');
+                    circle.classList.add('step-circle');
+                    circle.textContent = i;
+
+                    const label = document.createElement('div');
+                    label.classList.add('step-label');
+                    label.textContent = ['Contacto', 'Entrega', 'Pago'][i - 1];
+
+                    stepEl.appendChild(circle);
+                    stepEl.appendChild(label);
+                    container.appendChild(stepEl);
+                }
+            }
+        });
+    </script>
+<!-- Facebook Pixel Base Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '734358555984219');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=734358555984219&ev=PageView&noscript=1"/>
+</noscript>
+</body>
+</html>
